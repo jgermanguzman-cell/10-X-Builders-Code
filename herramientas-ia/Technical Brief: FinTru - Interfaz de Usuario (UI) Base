@@ -1,68 +1,86 @@
-Technical Brief: FinTru - Interfaz de Usuario (UI) Base
+# Technical Brief: FinTru - Interfaz de Usuario (UI) Base
 
-1. Título de la tarea
+## 1. Título de la tarea
 
 Desarrollo de Interfaz de Usuario (UI) Base y Sistema de Diseño con Tailwind CSS.
 
-2. Contexto
+## 2. Contexto
 
-Este es el primer bloque iterativo del desarrollo de "FinTru". El objetivo es construir exclusivamente la capa visual (el "cascarón") de la aplicación, asegurando que se vea increíble, cumpla con los colores/espacios del sistema de diseño (Figma Tokens) y funcione perfectamente en teléfonos móviles. En esta etapa no conectaremos bases de datos reales ni lógicas financieras complejas; usaremos datos simulados (mock data) para ver cómo luce.
+Este es el primer bloque iterativo del desarrollo de **FinTru**.[page:2]  
+El objetivo es construir exclusivamente la capa visual (el “cascarón”) de la aplicación, asegurando que:
 
-3. Requerimientos técnicos
+- Se vea alineada con el sistema de diseño (Figma Tokens).[page:2]
+- Cumpla con los colores y espacios definidos en el sistema de diseño.[page:2]
+- Funcione perfectamente en teléfonos móviles (mobile first).[page:2]
 
-Lenguaje y Stack Tecnológico
+En esta etapa no conectaremos bases de datos reales ni lógicas financieras complejas; usaremos datos simulados (*mock data*) para ver cómo luce.[page:2]
 
-Frontend: React (para crear los componentes visuales) y HTML5.
+## 3. Requerimientos técnicos
 
-Estilos: Tailwind CSS. Traduciremos las variables del archivo JSON (Fintru DS) a la configuración de Tailwind (colores Orange 500, Neutros, tipografía Inter, espacios, etc.).
+### 3.1 Lenguaje y stack tecnológico
 
-Iconos: Lucide-reactSin Backend por ahora: No usaremos Supabase ni Node.js en esta fase.
+- Frontend: **React** (para crear los componentes visuales) y HTML5.[page:2]
+- Estilos: **Tailwind CSS**  
+  - Traduciremos las variables del archivo JSON (FinTru DS) a la configuración de Tailwind (colores Orange 500, neutros, tipografía Inter, espacios, etc.).[page:2]
+- Iconos: **lucide-react**.[page:2]
+- Sin backend por ahora: no usaremos Supabase ni Node.js en esta fase.[page:2]
 
-Arquitectura
+### 3.2 Arquitectura
 
-Basada en Componentes (UI Components): Crearemos piezas reutilizables como Boton, TarjetaDeGasto, BarraDeProgreso503020, ModalDeMovimiento.
+- Basada en componentes (UI Components):[page:2]  
+  - `Boton`  
+  - `TarjetaDeGasto`  
+  - `BarraDeProgreso503020`  
+  - `ModalDeMovimiento`
+- Manejo de estado local: lógica básica para interacción de pantalla  
+  - Clic en “+” abre un modal.[page:2]  
+  - Clic en una pestaña cambia la vista.[page:2]
 
-Manejo de Estado Local: Solo usaremos lógica básica para interactuar con la pantalla (ejemplo: hacer clic en "+" abre un modal, hacer clic en una pestaña cambia la vista).
+### 3.3 Modelo de datos (datos de prueba / mock data)
 
-Modelo de datos (Datos de Prueba / Mock Data)
-Usaremos un archivo local con información estática para simular que la app tiene datos:
+Usaremos un archivo local con información estática para simular que la app tiene datos.[page:2]
 
-Input (Datos falsos a inyectar):
+**Input (datos falsos a inyectar):**[page:2]
 
-mockProfile: Nombre del usuario, GSD simulado ($50,000 COP), MDL simulado (5.2 meses).
+- `mockProfile`: nombre del usuario, GSD simulado (50,000 COP), MDL simulado (5.2 meses).[page:2]
+- `mockAccounts`:  
+  - Una cuenta **“Cash”** con 100,000 COP.  
+  - Una cuenta bancaria con 500,000 COP.[page:2]
+- `mockTransactions`: lista de 3 o 4 gastos de ejemplo para llenar el historial visual.[page:2]
 
-mockAccounts: Una cuenta "Cash" con $100,000 y una cuenta bancaria con $500,000.
+**Output (visual):**[page:2]
 
-mockTransactions: Lista de 3 o 4 gastos de ejemplo para llenar el historial visual.
+- Interfaz renderizada usando estos datos falsos.[page:2]
 
-Output (Visual):
+### 3.4 Comportamiento esperado
 
-Interfaz renderizada usando estos datos falsos.
+- **Layout principal:**  
+  - Navegación en la parte inferior (estilo app móvil) en celular.[page:2]  
+  - Navegación lateral en vista web/escritorio.[page:2]
+- **Dashboard visual:**  
+  - Tarjeta principal del **GSD (Gasto Seguro Diario)**.[page:2]  
+  - Barra de colores del **50/30/20**.[page:2]  
+  - Lista inferior con atajos (*shortcuts*) visuales.[page:2]
+- **Interacciones de UI:**  
+  - Al hacer clic en el botón flotante principal (FAB “+”), debe deslizarse o aparecer el **Modal Universal de Movimientos** con sus campos de formulario.[page:2]  
+  - Al darle “Guardar”, por ahora solo debe imprimir un mensaje interno (por ejemplo, en consola), sin guardar en base de datos.[page:2]
 
-Comportamiento esperado
+## 4. Constraints (restricciones)
 
-Layout Principal: Un diseño responsivo donde la navegación esté en la parte inferior (estilo app móvil) si se ve en un celular, o lateral si se ve en web/escritorio.
+- **Mobile first estricto:**  
+  - Diseñar primero para pantalla pequeña (390 px de ancho).[page:2]  
+  - Todo debe ser fácil de tocar con el dedo (botones de buen tamaño, según el token de spacing).[page:2]
+- **Fidelidad al sistema de diseño:**  
+  - Usar estrictamente los colores definidos en el JSON (ej.: `Color/Orange/500`, `Color/Neutral/Bg Base`).[page:2]
+- **Cero lógica de negocio:**  
+  - No calcular el GSD matemáticamente aquí; solo mostrar un número estático que le pasemos.[page:2]
+- **Descartado temporalmente:**  
+  - Nada de registro con correos, Gemini API, notificaciones push ni base de datos.[page:2]  
+  - Solo pantallas estáticas interactivas.[page:2]
 
-Dashboard Visual: Renderizar la tarjeta gigante del GSD (Gasto Seguro Diario), la barra de colores del 50/30/20 y una lista debajo con atajos (shortcuts) visuales.
+## 5. Definition of Done (DoD)
 
-Interacciones de UI: Al hacer clic en el botón flotante principal (FAB "+"), debe deslizarse o aparecer el Modal Universal de Movimientos con sus campos de formulario (aunque al darle "Guardar" por ahora solo imprima un mensaje interno, sin guardar en base de datos).
-
-4. Constraints (Restricciones)
-
-Mobile First Estricto: Diseñar primero para la pantalla pequeña (390px de ancho). Todo debe ser fácil de tocar con el dedo (botones de buen tamaño, según el token de Spacing).
-
-Fidelidad al Sistema de Diseño: Usar estrictamente los colores definidos en el JSON (ej. Color/Orange/500, Color/Neutral/Bg Base).
-
-Cero Lógica de Negocio: No calcular el GSD matemáticamente aquí; solo mostrar un número estático que le pasemos.
-
-Descartado temporalmente: Nada de registro con correos, Gemini API, notificaciones push ni base de datos. Solo pantallas estáticas interactivas.
-
-5. Definition of Done (DoD)
-
-La configuración de Tailwind incluye los colores, tipografías (Inter) y radios del archivo JSON proporcionado.
-
-El Dashboard principal se renderiza correctamente con datos falsos y es 100% responsivo.
-
-El "Modal de Movimientos" se abre, muestra un formulario básico (Tipo, Monto, Descripción) y se cierra al interactuar.
-
-La aplicación puede ser navegada visualmente sin arrojar errores de código.
+- La configuración de Tailwind incluye los colores, tipografías (Inter) y radios del archivo JSON proporcionado.[page:2]
+- El dashboard principal se renderiza correctamente con datos falsos y es 100 % responsivo.[page:2]
+- El **Modal de Movimientos** se abre, muestra un formulario básico (Tipo, Monto, Descripción) y se cierra al interactuar.[page:2]
+- La aplicación puede ser navegada visualmente sin arrojar errores de código.[page:2]
