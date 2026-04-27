@@ -1,0 +1,68 @@
+Technical Brief: FinTru - Interfaz de Usuario (UI) Base
+
+1. Título de la tarea
+
+Desarrollo de Interfaz de Usuario (UI) Base y Sistema de Diseño con Tailwind CSS.
+
+2. Contexto
+
+Este es el primer bloque iterativo del desarrollo de "FinTru". El objetivo es construir exclusivamente la capa visual (el "cascarón") de la aplicación, asegurando que se vea increíble, cumpla con los colores/espacios del sistema de diseño (Figma Tokens) y funcione perfectamente en teléfonos móviles. En esta etapa no conectaremos bases de datos reales ni lógicas financieras complejas; usaremos datos simulados (mock data) para ver cómo luce.
+
+3. Requerimientos técnicos
+
+Lenguaje y Stack Tecnológico
+
+Frontend: React (para crear los componentes visuales) y HTML5.
+
+Estilos: Tailwind CSS. Traduciremos las variables del archivo JSON (Fintru DS) a la configuración de Tailwind (colores Orange 500, Neutros, tipografía Inter, espacios, etc.).
+
+Iconos: Lucide-reactSin Backend por ahora: No usaremos Supabase ni Node.js en esta fase.
+
+Arquitectura
+
+Basada en Componentes (UI Components): Crearemos piezas reutilizables como Boton, TarjetaDeGasto, BarraDeProgreso503020, ModalDeMovimiento.
+
+Manejo de Estado Local: Solo usaremos lógica básica para interactuar con la pantalla (ejemplo: hacer clic en "+" abre un modal, hacer clic en una pestaña cambia la vista).
+
+Modelo de datos (Datos de Prueba / Mock Data)
+Usaremos un archivo local con información estática para simular que la app tiene datos:
+
+Input (Datos falsos a inyectar):
+
+mockProfile: Nombre del usuario, GSD simulado ($50,000 COP), MDL simulado (5.2 meses).
+
+mockAccounts: Una cuenta "Cash" con $100,000 y una cuenta bancaria con $500,000.
+
+mockTransactions: Lista de 3 o 4 gastos de ejemplo para llenar el historial visual.
+
+Output (Visual):
+
+Interfaz renderizada usando estos datos falsos.
+
+Comportamiento esperado
+
+Layout Principal: Un diseño responsivo donde la navegación esté en la parte inferior (estilo app móvil) si se ve en un celular, o lateral si se ve en web/escritorio.
+
+Dashboard Visual: Renderizar la tarjeta gigante del GSD (Gasto Seguro Diario), la barra de colores del 50/30/20 y una lista debajo con atajos (shortcuts) visuales.
+
+Interacciones de UI: Al hacer clic en el botón flotante principal (FAB "+"), debe deslizarse o aparecer el Modal Universal de Movimientos con sus campos de formulario (aunque al darle "Guardar" por ahora solo imprima un mensaje interno, sin guardar en base de datos).
+
+4. Constraints (Restricciones)
+
+Mobile First Estricto: Diseñar primero para la pantalla pequeña (390px de ancho). Todo debe ser fácil de tocar con el dedo (botones de buen tamaño, según el token de Spacing).
+
+Fidelidad al Sistema de Diseño: Usar estrictamente los colores definidos en el JSON (ej. Color/Orange/500, Color/Neutral/Bg Base).
+
+Cero Lógica de Negocio: No calcular el GSD matemáticamente aquí; solo mostrar un número estático que le pasemos.
+
+Descartado temporalmente: Nada de registro con correos, Gemini API, notificaciones push ni base de datos. Solo pantallas estáticas interactivas.
+
+5. Definition of Done (DoD)
+
+La configuración de Tailwind incluye los colores, tipografías (Inter) y radios del archivo JSON proporcionado.
+
+El Dashboard principal se renderiza correctamente con datos falsos y es 100% responsivo.
+
+El "Modal de Movimientos" se abre, muestra un formulario básico (Tipo, Monto, Descripción) y se cierra al interactuar.
+
+La aplicación puede ser navegada visualmente sin arrojar errores de código.
