@@ -30,8 +30,8 @@ Output:
 ### 4. Constraints (Restricciones)
 > **Annotation:** List any limitations or constraints relevant to this task.
 
-- Manejar los siguientes **casos borde**:
-  > **Annotation:** Specify edge cases that must be handled.
+- Manejar los siguientes **casos borde** :
+   > **Annotation:** Specify edge cases that must be handled.
 
 ### 5. Definition of Done (DoD)
 > **Annotation:** Define the criteria that will determine when this task is complete.
